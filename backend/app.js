@@ -4,6 +4,7 @@ const path = require('path')
 const userInViews = require('./lib/middleware/userInViews')
 const passport = require('./config/passport')
 
+const frontendPath = path.join(__dirname, '../frontend')
 const port = 8080
 
 const app = express()
@@ -21,16 +22,17 @@ if (app.get('env') === 'production') {
   
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.join(frontendPath, '/public')))
 app.use(session(sess))
 app.use(passport.initialize())
 app.use(passport.session())
 
 
-//const apiRoutes = require('./routes/api.js')
+const apiRoutes = require('./routes/api.js')
 const pagesRoutes = require('./routes/pages.js')
 
 app.use(userInViews())
-//app.use('/', apiRoutes)
+app.use('/', apiRoutes)
 app.use('/', pagesRoutes)
 
 app.listen(port, () => console.log('Example app listening on port ' + port))

@@ -4,6 +4,7 @@ const passport = require('passport')
 const path = require('path')
 const secured = require('../lib/middleware/secured');
 
+
 // Perform the login, after login Auth0 will redirect to callback
 router.get('/login', passport.authenticate('auth0', {
     scope: 'openid email profile'
@@ -23,20 +24,28 @@ router.get('/login', passport.authenticate('auth0', {
         res.redirect(returnTo || '/user')
       });
     })(req, res, next)
-  });
+  })
   
   // Perform session logout and redirect to homepage
   router.get('/logout', (req, res) => {
     req.logout()
     res.redirect('/')
-  });
+  })
 
   router.get('/user', secured(), function (req, res, next) {
-    res.send(req.user)
-  });
+    res.sendFile('D:\\Web-project\\frontend\\user.html')
+  })
 
   router.get('/',secured(), function (req, res, next) {
     res.redirect('/user')
-  });
+  })
 
-  module.exports = router;
+  router.get('/film/*',function(req,res){
+    res.sendFile('D:\\Web-project\\frontend\\film.html')
+  })
+
+  router.get('*',function(req,res){
+    res.send('404 error')
+  })
+
+  module.exports = router

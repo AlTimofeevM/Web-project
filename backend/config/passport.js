@@ -20,7 +20,6 @@ var strategy = new Auth0Strategy(
   passport.use(strategy)
 
   passport.serializeUser(function (user, done) {
-    console.log('Serializing', user)
     done(null, user)
   })
   
