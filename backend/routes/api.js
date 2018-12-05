@@ -5,8 +5,10 @@ const userController = require('../controllers/userController.js')
 
 router.get('/film=*', imdbController.showFilm)
 
-router.get('/userinfo',userController.getUser)
+router.get('/userinfo', userController.getUser)
 
-router.post('/search',imdbController.search)
+router.post('/search', imdbController.search)
+
+router.post('/addFilm', userController.addFilm)
 
 module.exports = router

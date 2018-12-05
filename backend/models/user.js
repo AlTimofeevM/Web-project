@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     Token: String,
     FirstName: String,
     LastName: String,
-    Anime: [String]
+    Film: [String]
 })
 
 const User = connection.model('User', userSchema)

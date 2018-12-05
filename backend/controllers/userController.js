@@ -8,3 +8,6 @@ module.exports.getUser= function(req,res){
     res.send({Username : username, Img : img})
 }
 
+module.exports.addFilm = function(req,res){
+    
+}
