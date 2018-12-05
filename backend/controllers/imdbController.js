@@ -11,5 +11,10 @@ module.exports.showFilm = async function(req,res){
     if(Movie === undefined){
         Movie = {Err : true}
     }
-    res.status(200).send(Movie)
-}   
+    res.send(Movie)
+}
+
+module.exports.search = function(req,res){
+    let film = req.body.film.replace(' ', '_')
+    res.redirect('/film/' + film)
+}

@@ -7,4 +7,6 @@ router.get('/film=*', imdbController.showFilm)
 
 router.get('/userinfo',userController.getUser)
 
+router.post('/search',imdbController.search)
+
 module.exports = router
