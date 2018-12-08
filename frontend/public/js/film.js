@@ -8,8 +8,9 @@ xhr.onload = function () {
     if(data.Err){
        document.getElementById('krakra').innerHTML = '<H3>Такого фильма нету<H3>'
     }else{
+        let Film =  { Title: data.title, Time : data.runtime}
         document.getElementById('Title').innerHTML = data.title
-        document.getElementById('Poster').innerHTML = '<img src="' + data.poster + '"/><button type="button" onclick="add(this)"  value="' + ip + '" class="btn btn-outline-info btn-md">Add to my list</button>'
+        document.getElementById('Poster').innerHTML = '<img src="' + data.poster + '"/><button type="button" onclick="add(value)"  value=\'' + JSON.stringify(Film) + '\' class="btn btn-outline-info btn-md">Add to my list</button>'
         document.getElementById('Year').innerHTML = data.year
         document.getElementById('Country').innerHTML = data.country
         document.getElementById('Director').innerHTML = data.director
@@ -23,7 +24,6 @@ xhr.onload = function () {
 xhr.send()
  
 
-function add (button) {
-    let film = button.value
-    $.post('/addFilm', {Film: film})
+function add (Film) {
+    $.post('/addFilm', {'Film':Film})
 }

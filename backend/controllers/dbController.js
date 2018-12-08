@@ -1,14 +1,13 @@
 const UserModel = require('../models/user.js')
-const FilmModel = require('../models/anime.js')
+const FilmModel = require('../models/film.js')
 
 
 exports.findUserById = function (id) {
     return UserModel.findById(id)
   }
 
-
-exports.findAnimeById = function(id){
-    return AnimeModel.findById(id)
+exports.findFilmById = function(id){
+    return FilmModel.findById(id)
 }
 
 exports.isUser = function(token){
@@ -28,8 +27,16 @@ exports.createUser = function(User){
   return UserModel.create(User)
 }
 
-exports.addFilm = function(userToken, film){
-  let session = null
-  
-  return UserModel.findOneAndUpdate({ Token: req.user.id }, { $push: { Film : filmId } })
+exports.createFilm = function(Film){
+  return FilmModel.create(Film)
+}
+
+exports.addFilm = function(userToken, filmId){
+  return UserModel.findOneAndUpdate({ Token: userToken }, { $push: { Film : filmId } })
+}
+
+exports.setTime = async function(userToken, time){
+   let User = await UserModel.findOne({'Token' : userToken})
+   Time =  User.Time + time
+  return UserModel.findOneAndUpdate({ Token: userToken }, { $set: { Time : Time } })
 }
