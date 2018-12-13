@@ -44,3 +44,14 @@ exports.setTime = async function(userToken, time){
 exports.findUserByToken = function(token){
   return UserModel.findOne({Token:token})
 }
+
+exports.isFilm = async function(token,film){
+  let user = await UserModel.findOne({Token:token})
+  for (let j of user.Film){
+    let Film = await FilmModel.findById(j)
+    if(Film.Name === film){
+      return true
+    }
+  }
+  return false
+}

@@ -3,6 +3,7 @@ const connection = require('../config/db')
 
 const filmSchema = mongoose.Schema({
     Name: String,
+    Img: String,
     Status: String
 })
 
