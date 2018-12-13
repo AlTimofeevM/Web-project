@@ -40,3 +40,7 @@ exports.setTime = async function(userToken, time){
    Time =  User.Time + time
   return UserModel.findOneAndUpdate({ Token: userToken }, { $set: { Time : Time } })
 }
+
+exports.findUserByToken = function(token){
+  return UserModel.findOne({Token:token})
+}

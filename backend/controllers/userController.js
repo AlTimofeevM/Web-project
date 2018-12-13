@@ -2,10 +2,11 @@ const db = require('./dbController')
 
 
 
-module.exports.getUser= function(req,res){
+module.exports.getUser = async function(req,res){
     let username = req.user.name.givenName + ' ' + req.user.name.familyName
     let img = req.user.picture
-    res.send({Username : username, Img : img})
+    let user = await db.findUserByToken(req.user.id)
+    res.send({Username : username, Img : img,Time : user.Time})
 }
 
 module.exports.addFilm = async function(req,res){

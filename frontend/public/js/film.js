@@ -10,7 +10,7 @@ xhr.onload = function () {
     }else{
         let Film =  { Title: data.title, Time : data.runtime}
         document.getElementById('Title').innerHTML = data.title
-        document.getElementById('Poster').innerHTML = '<img src="' + data.poster + '"/><button type="button" onclick="add(value)"  value=\'' + JSON.stringify(Film) + '\' class="btn btn-outline-info btn-md">Add to my list</button>'
+        document.getElementById('Poster').innerHTML = '<img src="' + data.poster + '"/><br/><br/><center><button type="button" onclick="add(value)"  value=\'' + JSON.stringify(Film) + '\' class="btn btn-outline-info btn-md">Add to my list</button></center>'
         document.getElementById('Year').innerHTML = data.year
         document.getElementById('Country').innerHTML = data.country
         document.getElementById('Director').innerHTML = data.director
