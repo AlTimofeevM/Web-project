@@ -7,7 +7,7 @@ xhr.onload = function () {
     let day = Math.floor(hour/24)
     document.getElementById('Username').innerHTML = data.Username
     document.getElementById('UserImg').innerHTML ='<img src="' + data.Img+ ' "/>'
-    document.getElementById('Time').innerHTML = day + ' дней ' + hour + ' часов ' + min + ' минут '
+    document.getElementById('Time').innerHTML = day + ' d ' + hour + ' h ' + min + ' m '
     let films = ''
     for(film of data.Films.reverse()){
         films += '<tr><td>' + '<a href= film/' + film.Title.replace(' ', '_') + ' >' + film.Title + '</a>' 

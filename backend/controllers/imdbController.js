@@ -1,5 +1,5 @@
 const imdb  = require('imdb-api')
-
+const db = require('./dbController')
 
 let findByName = async function (name) {
     return await imdb.get({name: name}, {apiKey: '94de8488'}).catch(console.log)
@@ -11,7 +11,9 @@ module.exports.showFilm = async function(req,res){
     if(Movie === undefined){
         Movie = {Err : true}
     }
-    res.send(Movie)
+    let isFilm = await db.isFilm(req.user.id,Movie.title)
+    let Data = {Data: Movie, isFilm: isFilm}
+    res.send(Data)
 }
 
 module.exports.search = function(req,res){

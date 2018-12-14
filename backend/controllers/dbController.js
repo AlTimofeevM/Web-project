@@ -35,11 +35,9 @@ exports.addFilm = function(userToken, filmId){
   return UserModel.findOneAndUpdate({ Token: userToken }, { $push: { Film : filmId } })
 }
 
-exports.setTime = async function(userToken, time){
-   let User = await UserModel.findOne({'Token' : userToken})
-   Time =  User.Time + time
-  return UserModel.findOneAndUpdate({ Token: userToken }, { $set: { Time : Time } })
-}
+exports.setTime = function(userToken, time){
+  return UserModel.findOneAndUpdate({ Token: userToken }, { $inc: { Time : time } })
+  }
 
 exports.findUserByToken = function(token){
   return UserModel.findOne({Token:token})
@@ -54,4 +52,12 @@ exports.isFilm = async function(token,film){
     }
   }
   return false
+}
+
+exports.deleteFilm = function(id){
+  return FilmModel.findOneAndDelete({_id: id})
+}
+
+exports.setNewFilmList = function(userToken,films,time){
+  return UserModel.findOneAndUpdate({ Token: userToken }, { $set: { Film : films } , $inc: {Time : time}})
 }

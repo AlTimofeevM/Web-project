@@ -11,4 +11,6 @@ router.post('/search', imdbController.search)
 
 router.post('/addFilm', userController.addFilm)
 
+router.post('/deleteFilm', userController.deleteFilm)
+
 module.exports = router

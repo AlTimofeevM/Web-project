@@ -24,5 +24,16 @@ module.exports.addFilm = async function(req,res){
     }else{
         console.log("Такой фильм уже добавлен")
     }
-    res.redirect('/')
+}
+
+module.exports.deleteFilm = async function(req,res){
+    let delFilm = JSON.parse(req.body.Film)
+    let User = await db.findUserByToken(req.user.id)
+    for(id of User.Film){
+        let Film = await db.findFilmById(id)
+        if(Film.Name === delFilm.Title){
+            await db.setNewFilmList(req.user.id,User.Film.remove(id), -delFilm.Time.slice(0,-3))
+            await db.deleteFilm(id)
+        }
+    }
 }
