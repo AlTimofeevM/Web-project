@@ -1,7 +1,6 @@
 const express = require('express')
 const session = require('express-session')
 const path = require('path')
-const userInViews = require('./lib/middleware/userInViews')
 const passport = require('./config/passport')
 
 const frontendPath = path.join(__dirname, '../frontend')
@@ -31,7 +30,6 @@ app.use(passport.session())
 const apiRoutes = require('./routes/api.js')
 const pagesRoutes = require('./routes/pages.js')
 
-app.use(userInViews())
 app.use('/', apiRoutes)
 app.use('/', pagesRoutes)
 

@@ -2,8 +2,15 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const path = require('path')
-const secured = require('../lib/middleware/secured');
 
+const auth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next()
+  }
+  else {
+    return res.status(200).redirect('/login')
+  }
+}
 
 // Perform the login, after login Auth0 will redirect to callback
 router.get('/login', passport.authenticate('auth0', {
@@ -32,15 +39,15 @@ router.get('/login', passport.authenticate('auth0', {
     res.redirect('/')
   })
 
-  router.get('/user', secured(), function (req, res, next) {
-    res.sendFile('D:\\Web-project\\frontend\\user.html')
+  router.get('/user', auth , function (req, res, next) {
+    res.status(200).sendFile('D:\\Web-project\\frontend\\user.html')
   })
 
-  router.get('/',secured(), function (req, res, next) {
-    res.redirect('/user')
+  router.get('/',auth, function (req, res, next) {
+    res.status(200).redirect('/user')
   })
 
-  router.get('/film/*',secured(),function(req,res){
+  router.get('/film/*',auth,function(req,res){
     res.sendFile('D:\\Web-project\\frontend\\film.html')
   })
 

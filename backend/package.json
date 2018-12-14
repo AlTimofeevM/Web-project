@@ -1,0 +1,29 @@
+{
+  "name": "webproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "imdb-api": "^4.0.2",
+    "mongoose": "^5.3.16",
+    "passport": "^0.4.0",
+    "passport-auth0": "^1.1.0",
+    "path": "^0.12.7",
+    "should": "^13.2.3",
+    "supertest": "^3.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Timofeev Alexandr",
+  "license": "ISC"
+}
