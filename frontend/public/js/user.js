@@ -6,7 +6,7 @@ xhr.onload = function () {
     let hour = Math.floor(data.Time/60)
     let day = Math.floor(hour/24)
     document.getElementById('Username').innerHTML = data.Username
-    document.getElementById('UserImg').innerHTML ='<img src="' + data.Img+ ' "/>'
+    document.getElementById('UserImg').innerHTML ='<img src="' + data.Img+ ' "  width="200" height="200" />'
     document.getElementById('Time').innerHTML = day + ' d ' + hour + ' h ' + min + ' m '
     let films = ''
     for(film of data.Films.reverse()){
