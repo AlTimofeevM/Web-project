@@ -40,15 +40,15 @@ router.get('/login', passport.authenticate('auth0', {
     res.redirect('/')
   })
 
-  router.get('/user', auth , function (req, res, next) {
+  router.get('/user', function (req, res, next) {
     res.sendFile(frontendPath + '/user.html')
   })
 
-  router.get('/',auth, function (req, res, next) {
+  router.get('/', function (req, res, next) {
     res.status(200).redirect('/user')
   })
 
-  router.get('/film/*',auth,function(req,res){
+  router.get('/film/*',function(req,res){
     res.sendFile(frontendPath + '/film.html')
   })
 
