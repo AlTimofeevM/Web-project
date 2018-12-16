@@ -1,7 +1,7 @@
 const imdb  = require('imdb-api')
 const db = require('./dbController')
 
-let findByName = async function (name) {
+findByName = async function (name) {
     return await imdb.get({name: name}, {apiKey: '94de8488'}).catch(console.log)
 }
 
