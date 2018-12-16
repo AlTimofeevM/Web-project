@@ -8,7 +8,7 @@ var strategy = new Auth0Strategy(
       clientID: 'glB7UNvEJZawyihqE67f0jEbFjH1lsai',
       clientSecret: 'Vl0a06A6QMvABSLOHyRTz0Gu1TcUqFL7ef4PaYmhQpzj0wFurUldv92xfPJz9EbQ',
       callbackURL:
-        process.env.AUTH0_CALLBACK_URL || 'https://webmyfilmlist.herokuapp.com/callback'
+        process.env.AUTH0_CALLBACK_URL || '/callback'
     },
     async function (accessToken, refreshToken, extraParams, profile, done) {
       // accessToken is the token to call Auth0 API (not needed in the most cases)
