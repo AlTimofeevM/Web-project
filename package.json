@@ -22,7 +22,7 @@
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "start":  "backend/app.js",
+    "start":  "node backend/app.js",
     "test": "mocha"
   },
   "engines": {
