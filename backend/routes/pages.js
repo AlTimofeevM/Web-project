@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
     next()
   }
   else {
-    return res.redirect('/login')
+    return res.send('WTF')
   }
 }
 
