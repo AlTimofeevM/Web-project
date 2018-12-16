@@ -2,13 +2,14 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const path = require('path')
+const frontendPath = path.join(__dirname, '../../frontend')
 
 const auth = (req, res, next) => {
   if (req.isAuthenticated()) {
     next()
   }
   else {
-    return res.status(200).redirect('/login')
+    return res.redirect('/login')
   }
 }
 
@@ -40,7 +41,7 @@ router.get('/login', passport.authenticate('auth0', {
   })
 
   router.get('/user', auth , function (req, res, next) {
-    res.status(200).sendFile('D:\\Web-project\\frontend\\user.html')
+    res.sendFile(frontendPath + '/user.html')
   })
 
   router.get('/',auth, function (req, res, next) {
@@ -48,7 +49,7 @@ router.get('/login', passport.authenticate('auth0', {
   })
 
   router.get('/film/*',auth,function(req,res){
-    res.sendFile('D:\\Web-project\\frontend\\film.html')
+    res.sendFile(frontendPath + '/film.html')
   })
 
   router.get('*',function(req,res){
