@@ -48,7 +48,7 @@ router.get('/login', passport.authenticate('auth0', {
     res.status(200).redirect('/user')
   })
 
-  router.get('/film/*',function(req,res){
+  router.get('/film/*', auth,function(req,res){
     res.sendFile(frontendPath + '/film.html')
   })
 
