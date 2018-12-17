@@ -32,9 +32,13 @@ xhr.send()
  
 
 function addFilm (Film) {
+    alert("Фильм добавлен")
     $.post('/addFilm', {'Film':Film})
+    window.location.reload()
 }
 
 function deleteFilm (Film) {
+    alert("Фильм удален")
     $.post('/deleteFilm', {'Film':Film})
+    window.location.reload()
 }
